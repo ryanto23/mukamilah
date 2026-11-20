@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic &amp; Research Hub | UIM Pamekasan</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Lora"', 'serif'],
+                    },
+                    colors: {
+                        navy: '#0f172a',
+                        emerald: '#065f46',
+                        gold: '#b45309',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-bold text-lg tracking-tight text-navy">
+                Words <span class="text-emerald">&amp;</span> Inquiry
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#tentang" class="hover:text-emerald transition">Profil</a>
+                <a href="#artikel" class="hover:text-emerald transition">Tulisan &amp; Riset</a>
+                <a href="#publikasi" class="hover:text-emerald transition">Publikasi</a>
+                <a href="#kontak" class="hover:text-emerald transition">Kolaborasi</a>
+            </nav>
+            <a href="#kontak" class="text-xs font-semibold bg-navy text-white px-4 py-2 rounded-full hover:bg-emerald transition">
+                Hubungi Saya
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="py-16 md:py-24 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-10 items-center">
+            <div class="md:col-span-2 space-y-5">
+                <div class="inline-flex items-center space-x-2 bg-emerald-50 text-emerald px-3 py-1 rounded-full text-xs font-semibold">
+                    <span>Universitas Islam Madura (UIM)</span>
+                    <span>•</span>
+                    <span>Pamekasan</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold text-navy leading-tight">
+                    [Nama Lengkap &amp; Gelar Anda]
+                </h1>
+                <p class="text-lg md:text-xl font-serif text-slate-600">
+                    Dosen Pendidikan Bahasa Inggris &amp; Kepala Pusat Penelitian LP2M Universitas Islam Madura.
+                </p>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    Berdedikasi menjembatani inovasi pengajaran bahasa Inggris modern dengan penguatan ekosistem riset berbasis kearifan lokal Madura menuju panggung akademik global.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-3">
+                    <a href="#artikel" class="bg-emerald text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-navy transition">
+                        Baca Tulisan Terbaru
+                    </a>
+                    <a href="#publikasi" class="border border-slate-300 text-slate-700 px-5 py-2.5 rounded-lg text-sm font-medium hover:border-navy transition">
+                        Indeks Publikasi
+                    </a>
+                </div>
+            </div>
+            
+            <!-- FOTO PROFIL -->
+            <div class="flex justify-center">
+                <div class="w-56 h-56 md:w-64 md:h-64 rounded-2xl bg-slate-200 border-4 border-white shadow-lg overflow-hidden flex items-center justify-center text-center p-4">
+                    <span class="text-xs text-slate-500">
+                        Tempat Foto Profil Anda<br>(Ganti dengan tag img)
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- TENTANG & PERAN UTAMA -->
+    <section id="tentang" class="py-16 max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald">Akademik &amp; Pengajaran</span>
+                <h2 class="text-xl font-bold text-navy mt-2 mb-3">English Language Education</h2>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Fokus pada pengembangan kurikulum bahasa Inggris, metodologi pengajaran komunikatif, <em>Academic Writing</em>, serta pemanfaatan teknologi digital dalam pembelajaran bahasa.
+                </p>
+            </div>
+            <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+                <span class="text-xs font-bold uppercase tracking-wider text-gold">Manajemen Riset LP2M</span>
+                <h2 class="text-xl font-bold text-navy mt-2 mb-3">Kepala Pusat Penelitian UIM</h2>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Mendorong budaya meneliti di kalangan dosen dan mahasiswa, pendampingan hibah penelitian kompetitif, serta hilirisasi riset unggulan berbasis potensi lokal Madura.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTIKEL & CATATAN RISET -->
+    <section id="artikel" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-navy">Tulisan &amp; Catatan Akademik</h2>
+                    <p class="text-sm text-slate-500 mt-1">Gagasan seputar pengajaran bahasa Inggris, metodologi riset, dan publikasi ilmiah.</p>
+                </div>
+                <div class="flex gap-2 mt-4 md:mt-0">
+                    <button onclick="filterPosts('all', this)" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-navy text-white">Semua</button>
+                    <button onclick="filterPosts('english', this)" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200">English Corner</button>
+                    <button onclick="filterPosts('research', this)" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200">Riset &amp; LP2M</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6" id="posts-container">
+                <!-- Artikel 1 -->
+                <article class="post-card border border-slate-200 rounded-xl p-6 hover:shadow-md transition flex flex-col justify-between" data-category="research">
+                    <div>
+                        <span class="text-xs font-semibold text-gold bg-amber-50 px-2.5 py-1 rounded">Riset &amp; LP2M</span>
+                        <h3 class="font-bold text-lg text-navy mt-3 mb-2 leading-snug">
+                            Mengangkat Kearifan Lokal Madura Menjadi Topik Riset Bereputasi Global
+                        </h3>
+                        <p class="text-sm text-slate-600">
+                            Strategi membingkai isu budaya, pesantren, dan sosial-ekonomi Madura agar relevan dengan diskursus jurnal internasional.
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                        <span>Nov 2026</span>
+                        <a href="#" class="font-semibold text-emerald hover:underline">Baca selengkapnya →</a>
+                    </div>
+                </article>
+
+                <!-- Artikel 2 -->
+                <article class="post-card border border-slate-200 rounded-xl p-6 hover:shadow-md transition flex flex-col justify-between" data-category="english">
+                    <div>
+                        <span class="text-xs font-semibold text-emerald bg-emerald-50 px-2.5 py-1 rounded">English Corner</span>
+                        <h3 class="font-bold text-lg text-navy mt-3 mb-2 leading-snug">
+                            Panduan Praktis Menulis Abstrak Bahasa Inggris yang Jelas dan Persuasif
+                        </h3>
+                        <p class="text-sm text-slate-600">
+                            Kesalahan tata bahasa yang sering muncul pada abstrak artikel ilmiah dosen dan mahasiswa beserta cara memperbaikinya.
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                        <span>Nov 2026</span>
+                        <a href="#" class="font-semibold text-emerald hover:underline">Baca selengkapnya →</a>
+                    </div>
+                </article>
+
+                <!-- Artikel 3 -->
+                <article class="post-card border border-slate-200 rounded-xl p-6 hover:shadow-md transition flex flex-col justify-between" data-category="research">
+                    <div>
+                        <span class="text-xs font-semibold text-gold bg-amber-50 px-2.5 py-1 rounded">Riset &amp; LP2M</span>
+                        <h3 class="font-bold text-lg text-navy mt-3 mb-2 leading-snug">
+                            Roadmap Peningkatan Kualitas Publikasi Ilmiah di Lingkungan Kampus
+                        </h3>
+                        <p class="text-sm text-slate-600">
+                            Catatan strategis pengelolaan pusat penelitian dalam mendampingi peneliti pemula menuju jurnal terakreditasi SINTA.
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                        <span>Okt 2026</span>
+                        <a href="#" class="font-semibold text-emerald hover:underline">Baca selengkapnya →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+      <!-- PUBLIKASI & INDEKSASI -->
+    <section id="publikasi" class="py-16 max-w-5xl mx-auto px-6">
+        <div class="bg-navy text-white rounded-2xl p-8 md:p-10">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold mb-2">Rekam Jejak Publikasi &amp; Sitasi</h2>
+                <p class="text-slate-300 text-sm mb-6">
+                    Telusuri daftar lengkap publikasi jurnal nasional, internasional, prosiding, dan buku ajar melalui tautan indeksasi akademik berikut:
+                </p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" target="_blank" class="bg-white/10 hover:bg-white/20 p-4 rounded-xl text-center transition">
+                    <span class="block font-bold text-sm">Google Scholar</span>
+                    <span class="text-xs text-slate-300">Lihat Profil ↗</span>
+                </a>
+                <a href="#" target="_blank" class="bg-white/10 hover:bg-white/20 p-4 rounded-xl text-center transition">
+                    <span class="block font-bold text-sm">SINTA</span>
+                    <span class="text-xs text-slate-300">Lihat Skor ↗</span>
+                </a>
+                <a href="#" target="_blank" class="bg-white/10 hover:bg-white/20 p-4 rounded-xl text-center transition">
+                    <span class="block font-bold text-sm">ORCID iD</span>
+                    <span class="text-xs text-slate-300">Rekam Riset ↗</span>
+                </a>
+                <a href="#" target="_blank" class="bg-white/10 hover:bg-white/20 p-4 rounded-xl text-center transition">
+                    <span class="block font-bold text-sm">Scopus / Garuda</span>
+                    <span class="text-xs text-slate-300">Publikasi ↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / KONTAK -->
+    <footer id="kontak" class="bg-white border-t border-slate-200 py-12">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <h3 class="font-bold text-navy text-lg">[Nama Lengkap &amp; Gelar Anda]</h3>
+                <p class="text-sm text-slate-600 mt-1">
+                    Kantor LP2M — Universitas Islam Madura, Bettet, Pamekasan, Jawa Timur.
+                </p>
+                <p class="text-sm text-slate-500 mt-1">
+                    Email: <a href="mailto:namaanda@uim.ac.id" class="text-emerald font-medium hover:underline">namaanda@uim.ac.id</a>
+                </p>
+            </div>
+            <div class="text-xs text-slate-400">
+                &copy; 2026 Hak Cipta Dilindungi. Dibangun untuk Pengembangan Akademik &amp; Riset.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILTER -->
+    <script>
+        function filterPosts(category, clickedBtn) {
+            const cards = document.querySelectorAll('.post-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-navy', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            clickedBtn.classList.remove('bg-slate-100', 'text-slate-600');
+            clickedBtn.classList.add('bg-navy', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
