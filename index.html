@@ -1,159 +1,515 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Academic &amp; Research Hub | UIM Pamekasan</title>
-<style>
-  :root { --navy: #0f172a; --emerald: #065f46; --gold: #b45309; --bg: #f8fafc; --text: #1e293b; --muted: #64748b; }
-  * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-  a { text-decoration: none; color: inherit; }
-  .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-  header { position: sticky; top: 0; background: rgba(255,255,255,0.95); border-bottom: 1px solid #e2e8f0; z-index: 50; }
-  .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 68px; }
-  .brand { font-weight: 800; font-size: 1.15rem; color: var(--navy); }
-  .brand span { color: var(--emerald); }
-  .nav-links { display: flex; gap: 24px; font-size: 0.9rem; font-weight: 500; color: var(--muted); }
-  .nav-links a:hover { color: var(--emerald); }
-  .btn-nav { background: var(--navy); color: #fff; padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
-  .hero { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 64px 0; }
-  .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: center; }
-  .badge { display: inline-block; background: #ecfdf5; color: var(--emerald); padding: 4px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; margin-bottom: 14px; }
-  .hero h1 { font-size: 2.3rem; color: var(--navy); line-height: 1.2; margin-bottom: 12px; }
-  .hero-sub { font-family: Georgia, serif; font-size: 1.15rem; color: #334155; margin-bottom: 14px; }
-  .hero-desc { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { background: var(--emerald); color: #fff; padding: 11px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
-  .btn-outline { border: 1px solid #cbd5e1; color: var(--text); padding: 11px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
-  .photo-box { width: 220px; height: 220px; margin: 0 auto; border-radius: 20px; background: #e2e8f0; border: 4px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; text-align: center; padding: 16px; font-size: 0.8rem; color: var(--muted); overflow: hidden; }
-  .photo-box img { width: 100%; height: 100%; object-fit: cover; }
-  .section { padding: 60px 0; }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
-  .label-green { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--emerald); }
-  .label-gold { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); }
-  .card h2 { font-size: 1.25rem; color: var(--navy); margin: 8px 0 10px; }
-  .card p { font-size: 0.9rem; color: var(--muted); }
-  .articles-bg { background: #fff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 60px 0; }
-  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
-  .sec-head h2 { font-size: 1.7rem; color: var(--navy); }
-  .filters { display: flex; gap: 8px; }
-  .filter-btn { border: none; padding: 7px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: #f1f5f9; color: var(--muted); }
-  .filter-btn.active { background: var(--navy); color: #fff; }
-  .post-card { border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; background: #fff; }
-  .tag-gold { display: inline-block; background: #fffbeb; color: var(--gold); font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 6px; }
-  .tag-green { display: inline-block; background: #ecfdf5; color: var(--emerald); font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 6px; }
-  .post-card h3 { font-size: 1.05rem; color: var(--navy); margin: 12px 0 8px; line-height: 1.4; }
-  .post-foot { margin-top: 18px; padding-top: 12px; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); }
-  .post-foot a { color: var(--emerald); font-weight: 600; }
-  .pub-box { background: var(--navy); color: #fff; border-radius: 20px; padding: 40px; }
-  .pub-box h2 { font-size: 1.5rem; margin-bottom: 8px; }
-  .pub-box p { color: #cbd5e1; font-size: 0.9rem; margin-bottom: 24px; max-width: 600px; }
-  .pub-link { background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; text-align: center; display: block; transition: 0.2s; }
-  .pub-link:hover { background: rgba(255,255,255,0.2); }
-  .pub-link strong { display: block; font-size: 0.92rem; margin-bottom: 2px; }
-  .pub-link span { font-size: 0.75rem; color: #cbd5e1; }
-  footer { background: #fff; border-top: 1px solid #e2e8f0; padding: 40px 0; font-size: 0.88rem; color: var(--muted); }
-  .foot-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  @media (max-width: 768px) {
-    .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    .grid-4 { grid-template-columns: 1fr 1fr; }
-    .nav-links { display: none; }
-    .hero h1 { font-size: 1.85rem; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Akademik & Ujian | Dosen Bahasa Inggris, Fakultas Teknik & LP2M UIM</title>
+    <script src="https://tailwindcss.com"></script>
+    <script src="https://unpkg.com"></script>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-serif-academic { font-family: 'Merriweather', serif; }
+    </style>
 </head>
-<body>
-  <!-- Struktur navigasi utama, hero section, dan profil akademik UIM Pamekasan -->
-  <!-- Silakan lanjutkan dengan menyalin bagian penutup kode -->
-</body>
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <!-- ARTIKEL & CATATAN RISET -->
-<section id="artikel" class="articles-bg">
-  <div class="container">
-    <div class="sec-head">
-      <div>
-        <h2>Tulisan &amp; Catatan Akademik</h2>
-        <p style="font-size:0.9rem; color:#64748b;">Gagasan seputar pengajaran bahasa Inggris, metodologi riset, dan publikasi ilmiah.</p>
-      </div>
-      <div class="filters">
-        <button onclick="filterPosts('all', this)" class="filter-btn active">Semua</button>
-        <button onclick="filterPosts('english', this)" class="filter-btn">English Corner</button>
-        <button onclick="filterPosts('research', this)" class="filter-btn">Riset &amp; LP2M</button>
-      </div>
-    </div>
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#beranda" class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-lg bg-emerald-900 text-amber-400 flex items-center justify-center font-serif-academic font-bold text-lg">
+                    U
+                </div>
+                <div>
+                    <span class="font-bold text-slate-900 block leading-none text-sm sm:text-base">[Nama Lengkap & Gelar]</span>
+                    <span class="text-xs text-emerald-800 font-medium">Universitas Islam Madura (UIM)</span>
+                </div>
+            </a>
 
-    <div class="grid-3">
-      <article class="post-card" data-category="research">
-        <div>
-          <span class="tag-gold">Riset &amp; LP2M</span>
-          <h3>Mengangkat Kearifan Lokal Madura Menjadi Topik Riset Bereputasi Global</h3>
-          <p style="font-size:0.88rem; color:#64748b;">Strategi membingkai isu budaya, pesantren, dan sosial-ekonomi Madura.</p>
+            <nav class="hidden lg:flex items-center gap-5 text-sm font-medium text-slate-600">
+                <a href="#beranda" class="hover:text-emerald-800 transition">Beranda</a>
+                <a href="#profil" class="hover:text-emerald-800 transition">Profil & LP2M</a>
+                <a href="#toefl" class="hover:text-emerald-800 transition flex items-center gap-1 text-emerald-900 font-semibold">
+                    <i data-lucide="award" class="w-4 h-4 text-amber-600"></i> Tes TOEFL
+                </a>
+                <a href="#ujian-kuliah" class="hover:text-emerald-800 transition flex items-center gap-1 text-emerald-900 font-semibold">
+                    <i data-lucide="file-check-2" class="w-4 h-4 text-emerald-700"></i> Ujian Kuliah
+                </a>
+                <a href="#tridharma" class="hover:text-emerald-800 transition">Publikasi</a>
+                <a href="#kontak" class="px-4 py-2 rounded-lg bg-emerald-900 text-white hover:bg-emerald-800 transition">Kontak</a>
+            </nav>
+
+            <button id="menuBtn" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
         </div>
-        <div class="post-foot"><span>Nov 2026</span><a href="#">Baca selengkapnya →</a></div>
-      </article>
-      <article class="post-card" data-category="english">
-        <div>
-          <span class="tag-green">English Corner</span>
-          <h3>Panduan Praktis Menulis Abstrak Bahasa Inggris yang Jelas</h3>
-          <p style="font-size:0.88rem; color:#64748b;">Kesalahan tata bahasa yang sering muncul pada abstrak artikel ilmiah.</p>
+
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <a href="#beranda" class="block py-2 text-slate-700 hover:text-emerald-800">Beranda</a>
+            <a href="#profil" class="block py-2 text-slate-700 hover:text-emerald-800">Profil, Fakultas Teknik & LP2M</a>
+            <a href="#toefl" class="block py-2 text-emerald-900 font-semibold">Menu Tes TOEFL</a>
+            <a href="#ujian-kuliah" class="block py-2 text-emerald-900 font-semibold">Menu Ujian Kuliah (Per Jurusan)</a>
+            <a href="#tridharma" class="block py-2 text-slate-700 hover:text-emerald-800">Publikasi & Riset</a>
+            <a href="#kontak" class="block py-2 text-emerald-800 font-semibold">Kontak</a>
         </div>
-        <div class="post-foot"><span>Nov 2026</span><a href="#">Baca selengkapnya →</a></div>
-      </article>
-      <article class="post-card" data-category="research">
-        <div>
-          <span class="tag-gold">Riset &amp; LP2M</span>
-          <h3>Roadmap Peningkatan Kualitas Publikasi Ilmiah Kampus</h3>
-          <p style="font-size:0.88rem; color:#64748b;">Catatan strategis pengelolaan pusat penelitian menuju jurnal terakreditasi.</p>
+    </header>
+
+    <section id="beranda" class="bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-800 text-white py-14 sm:py-18">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-3 gap-8 items-center">
+            <div class="md:col-span-2 space-y-5">
+                <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-emerald-800/80 border border-emerald-700 text-amber-300 text-xs font-semibold tracking-wide">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    <span>DOSEN BAHASA INGGRIS • FAKULTAS TEKNIK • LP2M UIM</span>
+                </div>
+                <h1 class="font-serif-academic text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+                    [Nama Lengkap beserta Gelar Akademik]
+                </h1>
+                <p class="text-emerald-100 text-base sm:text-lg leading-relaxed max-w-2xl">
+                    Portal akademik resmi untuk layanan pengajaran <strong>Bahasa Inggris (ESP & TOEFL)</strong> di lingkungan <strong>Fakultas Teknik</strong> serta pengelolaan riset dan publikasi di <strong>LP2M Universitas Islam Madura</strong>.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-3">
+                    <a href="#ujian-kuliah" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 text-slate-950 font-bold text-sm hover:bg-amber-400 transition">
+                        <i data-lucide="laptop" class="w-4 h-4"></i>
+                        Masuk Ujian Kuliah (CBT)
+                    </a>
+                    <a href="#toefl" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 border border-white/25 text-white font-semibold text-sm hover:bg-white/20 transition">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        Portal Tes TOEFL
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <div class="w-52 h-60 sm:w-60 sm:h-68 rounded-2xl bg-emerald-800 border-4 border-amber-400/80 shadow-2xl overflow-hidden flex flex-col items-center justify-center text-center p-4">
+                    <i data-lucide="user" class="w-16 h-16 text-emerald-300 mb-2"></i>
+                    <span class="text-xs text-emerald-200">Foto Formal Akademik</span>
+                </div>
+            </div>
         </div>
-        <div class="post-foot"><span>Okt 2026</span><a href="#">Baca selengkapnya →</a></div>
-      </article>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- PUBLIKASI & INDEKSASI -->
-<section id="publikasi" class="section">
-  <div class="container">
-    <div class="pub-box">
-      <h2>Rekam Jejak Publikasi &amp; Sitasi</h2>
-      <p>Telusuri daftar lengkap publikasi melalui tautan indeksasi akademik berikut:</p>
-      <div class="grid-4">
-        <a href="#" target="_blank" class="pub-link"><strong>Google Scholar</strong><span>Lihat Profil ↗</span></a>
-        <a href="#" target="_blank" class="pub-link"><strong>SINTA</strong><span>Lihat Skor ↗</span></a>
-        <a href="#" target="_blank" class="pub-link"><strong>ORCID iD</strong><span>Rekam Riset ↗</span></a>
-        <a href="#" target="_blank" class="pub-link"><strong>Scopus / Garuda</strong><span>Publikasi ↗</span></a>
-      </div>
-    </div>
-  </div>
-</section>
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-start gap-3.5">
+                <div class="p-2.5 rounded-lg bg-emerald-50 text-emerald-800">
+                    <i data-lucide="languages" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Bidang Keilmuan</p>
+                    <p class="font-bold text-slate-900 text-sm mt-0.5">Bahasa Inggris & ESP</p>
+                    <p class="text-xs text-slate-600 mt-0.5">TOEFL Preparation & Academic English</p>
+                </div>
+            </div>
 
-<!-- FOOTER / KONTAK -->
-<footer id="kontak">
-  <div class="container foot-wrap">
-    <div>
-      <strong style="color:#0f172a; font-size:1.05rem;">[Nama Lengkap &amp; Gelar Anda]</strong>
-      <p style="margin-top:4px;">Kantor LP2M — Universitas Islam Madura, Pamekasan, Jawa Timur.</p>
-      <p style="margin-top:2px;">Email: <a href="mailto:namaanda@uim.ac.id" style="color:#065f46; font-weight:600;">namaanda@uim.ac.id</a></p>
-    </div>
-    <div style="font-size:0.78rem; color:#94a3b8;">&copy; 2026 Hak Cipta Dilindungi.</div>
-  </div>
-</footer>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-start gap-3.5">
+                <div class="p-2.5 rounded-lg bg-blue-50 text-blue-800">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Afiliasi Fakultas</p>
+                    <p class="font-bold text-slate-900 text-sm mt-0.5">Fakultas Teknik UIM</p>
+                    <p class="text-xs text-slate-600 mt-0.5">Pengampu Mata Kuliah Bahasa Inggris Teknik</p>
+                </div>
+            </div>
 
-<!-- JAVASCRIPT FILTER -->
-<script>
-  function filterPosts(category, clickedBtn) {
-    const cards = document.querySelectorAll('.post-card');
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    clickedBtn.classList.add('active');
-    cards.forEach(card => {
-      card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
-    });
-  }
-</script>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-start gap-3.5">
+                <div class="p-2.5 rounded-lg bg-amber-50 text-amber-700">
+                    <i data-lucide="microscope" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase">Tugas Tambahan</p>
+                    <p class="font-bold text-slate-900 text-sm mt-0.5">Pengelola LP2M UIM</p>
+                    <p class="text-xs text-slate-600 mt-0.5">Penelitian, Pengabdian & Publikasi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="toefl" class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="bg-slate-900 text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> English Proficiency Center
+                    </span>
+                    <h2 class="font-serif-academic text-2xl sm:text-3xl font-bold">Menu Tes TOEFL (Prediction & Practice)</h2>
+                    <p class="text-slate-300 text-sm mt-1">Simulasi dan tes standar kemahiran Bahasa Inggris untuk mahasiswa dan syarat kelulusan.</p>
+                </div>
+                <div class="bg-slate-800 px-4 py-3 rounded-xl border border-slate-700 text-xs space-y-1 shrink-0">
+                    <p class="text-slate-400">Standar Penilaian:</p>
+                    <p class="font-bold text-amber-400 text-sm">Skor 310 – 677 (ITP Scale)</p>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center mb-3">
+                            <i data-lucide="headphones" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-blue-700">SECTION 1</span>
+                        <h3 class="font-bold text-slate-900 text-base mt-0.5">Listening Comprehension</h3>
+                        <p class="text-xs text-slate-600 mt-2">50 Soal • Waktu 35 Menit. Menguji pemahaman percakapan dan ceramah akademik.</p>
+                    </div>
+                    <button onclick="bukaModalUjian('TOEFL Section 1: Listening Comprehension')" class="mt-4 w-full py-2 px-3 rounded-lg bg-white border border-slate-300 text-slate-800 font-semibold text-xs hover:bg-blue-700 hover:text-white hover:border-blue-700 transition">
+                        Mulai Latihan Listening
+                    </button>
+                </div>
+
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center mb-3">
+                            <i data-lucide="pen-tool" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700">SECTION 2</span>
+                        <h3 class="font-bold text-slate-900 text-base mt-0.5">Structure & Written</h3>
+                        <p class="text-xs text-slate-600 mt-2">40 Soal • Waktu 25 Menit. Menguji tata bahasa Inggris baku dan analisis kalimat.</p>
+                    </div>
+                    <button onclick="bukaModalUjian('TOEFL Section 2: Structure & Written Expression')" class="mt-4 w-full py-2 px-3 rounded-lg bg-white border border-slate-300 text-slate-800 font-semibold text-xs hover:bg-emerald-800 hover:text-white hover:border-emerald-800 transition">
+                        Mulai Latihan Structure
+                    </button>
+                </div>
+
+                <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-800 flex items-center justify-center mb-3">
+                            <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-purple-700">SECTION 3</span>
+                        <h3 class="font-bold text-slate-900 text-base mt-0.5">Reading Comprehension</h3>
+                        <p class="text-xs text-slate-600 mt-2">50 Soal • Waktu 55 Menit. Menguji pemahaman bacaan ilmiah dan kosakata.</p>
+                    </div>
+                    <button onclick="bukaModalUjian('TOEFL Section 3: Reading Comprehension')" class="mt-4 w-full py-2 px-3 rounded-lg bg-white border border-slate-300 text-slate-800 font-semibold text-xs hover:bg-purple-700 hover:text-white hover:border-purple-700 transition">
+                        Mulai Latihan Reading
+                    </button>
+                </div>
+
+                <div class="p-5 rounded-xl border-2 border-amber-400 bg-amber-50/60 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center mb-3">
+                            <i data-lucide="trophy" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-xs font-bold text-amber-800">FULL SIMULATION</span>
+                        <h3 class="font-bold text-slate-900 text-base mt-0.5">TOEFL Prediction Lengkap</h3>
+                        <p class="text-xs text-slate-700 mt-2">140 Soal • 115 Menit. Simulasi penuh dengan perhitungan konversi skor otomatis.</p>
+                    </div>
+                    <button onclick="bukaModalUjian('Full TOEFL Prediction Test (140 Soal)')" class="mt-4 w-full py-2.5 px-3 rounded-lg bg-emerald-900 text-white font-bold text-xs hover:bg-emerald-800 transition shadow-sm">
+                        Mulai Tes Lengkap
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section id="ujian-kuliah" class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2">
+                        <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Computer-Based Test (CBT) Perkuliahan
+                    </span>
+                    <h2 class="font-serif-academic text-2xl sm:text-3xl font-bold text-slate-900">Ujian Kuliah Per Tingkatan & Jurusan</h2>
+                    <p class="text-slate-600 text-sm mt-1">Pilih Program Studi (Fakultas Teknik / Umum) dan Tingkatan Semester untuk mengakses ruang ujian UTS/UAS.</p>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4 my-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div>
+                    <label for="filterJurusan" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">1. Pilih Jurusan / Prodi</label>
+                    <select id="filterJurusan" onchange="filterUjian()" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:border-emerald-700">
+                        <option value="all">Semua Jurusan (Fakultas Teknik & Umum)</option>
+                        <option value="ti">Teknik Informatika (TI)</option>
+                        <option value="tind">Teknik Industri</option>
+                        <option value="ts">Teknik Sipil</option>
+                        <option value="pbi">Pendidikan Bahasa Inggris (PBI)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="filterTingkat" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">2. Pilih Tingkatan / Semester</label>
+                    <select id="filterTingkat" onchange="filterUjian()" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:border-emerald-700">
+                        <option value="all">Semua Tingkatan</option>
+                        <option value="1">Tingkat I (Semester 1 & 2)</option>
+                        <option value="2">Tingkat II (Semester 3 & 4)</option>
+                        <option value="3">Tingkat III (Semester 5 & 6)</option>
+                        <option value="4">Tingkat IV (Semester 7 & 8)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="filterJenis" class="block text-xs font-bold text-slate-700 uppercase mb-1.5">3. Jenis Evaluasi</label>
+                    <select id="filterJenis" onchange="filterUjian()" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 focus:outline-none focus:border-emerald-700">
+                        <option value="all">Semua Jenis (Kuis, UTS, UAS)</option>
+                        <option value="UTS">Ujian Tengah Semester (UTS)</option>
+                        <option value="UAS">Ujian Akhir Semester (UAS)</option>
+                        <option value="KUIS">Kuis / Tugas Terstruktur</option>
+                    </select>
+                </div>
+            </div>
+
+                      <div id="daftarUjian" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="kartu-ujian p-5 rounded-xl border border-slate-200 hover:border-emerald-700 transition bg-white flex flex-col justify-between" data-jurusan="ti" data-tingkat="1" data-jenis="UTS">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 text-xs font-bold">Teknik Informatika</span>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">Tingkat I (Sem 1)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">English for Informatics (ESP I)</h3>
+                        <p class="text-xs text-slate-600 mt-1">Jenis: <strong>UTS</strong> • Durasi: 60 Menit • Token Wajib</p>
+                    </div>
+                    <button onclick="bukaModalUjian('UTS - English for Informatics (Teknik Informatika - Tingkat I)')" class="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-900 text-white font-semibold text-xs hover:bg-emerald-800 transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Masuk Ruang Ujian
+                    </button>
+                </div>
+
+                <div class="kartu-ujian p-5 rounded-xl border border-slate-200 hover:border-emerald-700 transition bg-white flex flex-col justify-between" data-jurusan="tind" data-tingkat="1" data-jenis="UTS">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-amber-50 text-amber-800 text-xs font-bold">Teknik Industri</span>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">Tingkat I (Sem 2)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Technical English & Terminology</h3>
+                        <p class="text-xs text-slate-600 mt-1">Jenis: <strong>UTS</strong> • Durasi: 60 Menit • Token Wajib</p>
+                    </div>
+                    <button onclick="bukaModalUjian('UTS - Technical English (Teknik Industri - Tingkat I)')" class="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-900 text-white font-semibold text-xs hover:bg-emerald-800 transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Masuk Ruang Ujian
+                    </button>
+                </div>
+
+                <div class="kartu-ujian p-5 rounded-xl border border-slate-200 hover:border-emerald-700 transition bg-white flex flex-col justify-between" data-jurusan="ts" data-tingkat="2" data-jenis="UAS">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-800 text-xs font-bold">Teknik Sipil</span>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">Tingkat II (Sem 3)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Academic Reading for Engineering</h3>
+                        <p class="text-xs text-slate-600 mt-1">Jenis: <strong>UAS</strong> • Durasi: 90 Menit • Token Wajib</p>
+                    </div>
+                    <button onclick="bukaModalUjian('UAS - Academic Reading for Engineering (Teknik Sipil - Tingkat II)')" class="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-900 text-white font-semibold text-xs hover:bg-emerald-800 transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Masuk Ruang Ujian
+                    </button>
+                </div>
+
+                                        <div class="kartu-ujian p-5 rounded-xl border border-slate-200 hover:border-emerald-700 transition bg-white flex flex-col justify-between" data-jurusan="ti" data-tingkat="3" data-jenis="KUIS">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 text-xs font-bold">Teknik Informatika</span>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">Tingkat III (Sem 5)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">International Journal & Abstract Writing</h3>
+                        <p class="text-xs text-slate-600 mt-1">Jenis: <strong>KUIS</strong> • Durasi: 30 Menit • Akses Terbuka</p>
+                    </div>
+                    <button onclick="bukaModalUjian('Kuis - International Journal Writing (Teknik Informatika - Tingkat III)')" class="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-900 text-white font-semibold text-xs hover:bg-emerald-800 transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="play" class="w-3.5 h-3.5"></i> Kerjakan Kuis
+                    </button>
+                </div>
+
+                <div class="kartu-ujian p-5 rounded-xl border border-slate-200 hover:border-emerald-700 transition bg-white flex flex-col justify-between" data-jurusan="pbi" data-tingkat="2" data-jenis="UTS">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-purple-50 text-purple-800 text-xs font-bold">Pend. Bahasa Inggris</span>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">Tingkat II (Sem 4)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Academic Writing & Research Methodology</h3>
+                        <p class="text-xs text-slate-600 mt-1">Jenis: <strong>UTS</strong> • Durasi: 90 Menit • Token Wajib</p>
+                    </div>
+                    <button onclick="bukaModalUjian('UTS - Academic Writing (PBI - Tingkat II)')" class="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-900 text-white font-semibold text-xs hover:bg-emerald-800 transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Masuk Ruang Ujian
+                    </button>
+                </div>
+
+                <div class="kartu-ujian p-5 rounded-xl border border-slate-200 hover:border-emerald-700 transition bg-white flex flex-col justify-between" data-jurusan="tind" data-tingkat="4" data-jenis="UAS">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded bg-amber-50 text-amber-800 text-xs font-bold">Teknik Industri</span>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold">Tingkat IV (Sem 7)</span>
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Scientific Presentation & Thesis Abstract</h3>
+                        <p class="text-xs text-slate-600 mt-1">Jenis: <strong>UAS</strong> • Durasi: 60 Menit • Token Wajib</p>
+                    </div>
+                    <button onclick="bukaModalUjian('UAS - Scientific Presentation (Teknik Industri - Tingkat IV)')" class="mt-4 w-full py-2 px-3 rounded-lg bg-emerald-900 text-white font-semibold text-xs hover:bg-emerald-800 transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="lock" class="w-3.5 h-3.5"></i> Masuk Ruang Ujian
+                    </button>
+                </div>
+            </div>
+
+            <div id="pesanKosong" class="hidden text-center py-8 text-slate-500 text-sm">
+                Belum ada jadwal ujian yang sesuai dengan kombinasi Jurusan dan Tingkatan yang dipilih.
+            </div>
+        </div>
+    </section>
+
+      <section id="profil" class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        <div class="mb-8">
+            <span class="text-xs font-bold tracking-wider uppercase text-emerald-800">Sinergi Akademik</span>
+            <h2 class="font-serif-academic text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Pengajaran Bahasa Inggris, Fakultas Teknik & LP2M</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                    <i data-lucide="book-marked" class="w-5 h-5 text-emerald-800"></i>
+                    Pengajaran Bahasa Inggris di Fakultas Teknik
+                </h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Mengembangkan kurikulum <em>English for Specific Purposes (ESP)</em> yang dirancang khusus bagi mahasiswa Fakultas Teknik UIM agar mampu membaca literatur keteknikan internasional, menyusun abstrak skripsi berbahasa Inggris, serta siap menghadapi tes sertifikasi TOEFL.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+                    <i data-lucide="network" class="w-5 h-5 text-amber-600"></i>
+                    Tugas Tambahan di LP2M UIM
+                </h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Berperan aktif dalam pengelolaan penelitian dosen, program pengabdian kepada masyarakat (PkM), serta pendampingan peningkatan kualitas publikasi jurnal ilmiah terakreditasi SINTA maupun jurnal internasional bereputasi di Universitas Islam Madura.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tridharma" class="bg-white border-y border-slate-200 py-14">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-bold tracking-wider uppercase text-emerald-800">Rekam Jejak Riset</span>
+                    <h2 class="font-serif-academic text-2xl sm:text-3xl font-bold text-slate-900 mt-1">Publikasi & Indeksasi Dosen</h2>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <a href="#" class="px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100">Google Scholar</a>
+                    <a href="#" class="px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100">SINTA Kemdiktisaintek</a>
+                    <a href="#" class="px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100">ORCID</a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span class="text-xs font-bold text-emerald-800">PUBLIKASI JURNAL • 2026</span>
+                    <h3 class="font-bold text-slate-900 text-base mt-1">[Judul Artikel Penelitian Bahasa Inggris / ESP Fakultas Teknik]</h3>
+                    <p class="text-xs text-slate-600 mt-1">Jurnal Ilmiah • Terindeks SINTA</p>
+                </div>
+                <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span class="text-xs font-bold text-amber-700">PENGABDIAN MASYARAKAT (LP2M) • 2025</span>
+                    <h3 class="font-bold text-slate-900 text-base mt-1">[Judul Program Pengabdian Masyarakat Berbasis Teknologi & Literasi]</h3>
+                    <p class="text-xs text-slate-600 mt-1">LP2M Universitas Islam Madura • Pamekasan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <footer id="kontak" class="bg-slate-900 text-slate-300 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid sm:grid-cols-2 gap-8 items-center">
+            <div>
+                <h3 class="font-serif-academic text-xl font-bold text-white">[Nama Lengkap & Gelar]</h3>
+                <p class="text-sm text-slate-400 mt-1">Dosen Bahasa Inggris • Fakultas Teknik • LP2M UIM</p>
+                <p class="text-xs text-slate-400 mt-3">Universitas Islam Madura, Jl. PP. Miftahul Ulum Bettet, Pamekasan, Madura.</p>
+            </div>
+            <div class="sm:text-right space-y-2 text-sm">
+                <p class="flex sm:justify-end items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
+                    <span>[email.anda@uim.ac.id]</span>
+                </p>
+                <p class="flex sm:justify-end items-center gap-2">
+                    <i data-lucide="globe" class="w-4 h-4 text-amber-400"></i>
+                    <span>uim.ac.id | lp2m.uim.ac.id</span>
+                </p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-8 pt-6 border-t border-slate-800 text-xs text-slate-500 text-center">
+            &copy; 2026 [Nama Lengkap]. Portal Akademik & Evaluasi Pembelajaran UIM.
+        </div>
+    </footer>
+
+    <div id="modalUjian" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+            <div class="flex items-start justify-between">
+                <div>
+                    <span class="text-xs font-bold text-emerald-800 uppercase">Verifikasi Peserta Ujian</span>
+                    <h3 id="judulModalUjian" class="font-bold text-slate-900 text-lg mt-0.5">Nama Ujian</h3>
+                </div>
+                <button onclick="tutupModalUjian()" class="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">NPM / NIM Mahasiswa</label>
+                    <input type="text" id="inputNim" placeholder="Contoh: 20240201001" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-emerald-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap Mahasiswa</label>
+                    <input type="text" id="inputNama" placeholder="Sesuai KRS / Absensi" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-emerald-700">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Kode Token Ujian</label>
+                    <input type="text" id="inputToken" placeholder="Masukkan token dari dosen" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm uppercase focus:outline-none focus:border-emerald-700">
+                </div>
+            </div>
+
+            <div class="pt-2 flex gap-2">
+                <button onclick="tutupModalUjian()" class="w-1/3 py-2.5 rounded-lg border border-slate-300 text-slate-700 font-semibold text-xs hover:bg-slate-50">
+                    Batal
+                </button>
+                <button onclick="mulaiSesiUjian()" class="w-2/3 py-2.5 rounded-lg bg-emerald-900 text-white font-bold text-xs hover:bg-emerald-800">
+                    Mulai Mengerjakan Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+      <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function filterUjian() {
+            const jurusan = document.getElementById('filterJurusan').value;
+            const tingkat = document.getElementById('filterTingkat').value;
+            const jenis = document.getElementById('filterJenis').value;
+            const kartu = document.querySelectorAll('.kartu-ujian');
+            let tampil = 0;
+
+            kartu.forEach(item => {
+                const matchJurusan = (jurusan === 'all' || item.dataset.jurusan === jurusan);
+                const matchTingkat = (tingkat === 'all' || item.dataset.tingkat === tingkat);
+                const matchJenis = (jenis === 'all' || item.dataset.jenis === jenis);
+
+                if (matchJurusan && matchTingkat && matchJenis) {
+                    item.classList.remove('hidden');
+                    tampil++;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('pesanKosong').classList.toggle('hidden', tampil > 0);
+        }
+
+        function bukaModalUjian(namaUjian) {
+            document.getElementById('judulModalUjian').textContent = namaUjian;
+            document.getElementById('modalUjian').classList.remove('hidden');
+        }
+
+        function tutupModalUjian() {
+            document.getElementById('modalUjian').classList.add('hidden');
+        }
+
+        function mulaiSesiUjian() {
+            const nim = document.getElementById('inputNim').value.trim();
+            const nama = document.getElementById('inputNama').value.trim();
+            if (!nim || !nama) {
+                alert('Silakan isi NPM/NIM dan Nama Lengkap Anda terlebih dahulu.');
+                return;
+            }
+            alert('Verifikasi berhasil untuk ' + nama + ' (' + nim + '). Sistem siap diarahkan ke lembar soal!');
+            tutupModalUjian();
+        }
+    </script>
 </body>
 </html>
+
